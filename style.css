@@ -29,6 +29,18 @@ header {
     box-sizing: border-box;
 }
 
+.filter-container {
+    position: absolute;
+    left: 1rem;
+    top: 6rem;
+}
+
+form ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+}
+
 .container {
     background-color: rgb(78, 78, 78);
     width: 80%;

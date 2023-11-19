@@ -10,7 +10,97 @@
 </head>
 <body>
     <header>Warframe Void Fissures</header>
-    
+    <form class="filter-container">
+        <h2>Filter <button type="button">Hide</button></h2>
+
+        <fieldset>
+            <legend>Tier</legend>
+            <button type="button">all</button>
+            <button type="button">none</button>
+            <ul>
+                <li>
+                    <label>Lith</label>
+                    <input type="checkbox" name="lith">
+                </li>
+                <li>
+                    <label>Meso</label>
+                    <input type="checkbox" name="meso">
+                </li>
+                <li>
+                    <label>Neo</label>
+                    <input type="checkbox" name="neo">
+                </li>
+                <li>
+                    <label>Axi</label>
+                    <input type="checkbox" name="axi">
+                </li>
+                <li>
+                    <label>Requiem</label>
+                    <input type="checkbox" name="requiem">
+                </li>
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend>Standard Mission Types</legend>
+            <button type="button">all</button>
+            <button type="button">none</button>
+            <ul>
+                <li>
+                    <label>Extermination</label>
+                    <input type="checkbox" name="extermination">
+                </li>
+                <li>
+                    <label>Rescue</label>
+                    <input type="checkbox" name="rescue">
+                </li>
+                <li>
+                    <label>Capture</label>
+                    <input type="checkbox" name="capture">
+                </li>
+                <li>
+                    <label>Defense</label>
+                    <input type="checkbox" name="defense">
+                </li>
+                <li>
+                    <label>Survival</label>
+                    <input type="checkbox" name="survival">
+                </li>
+                <li>
+                    <label>Interception</label>
+                    <input type="checkbox" name="interception">
+                </li>
+                <li>
+                    <label>Disruption</label>
+                    <input type="checkbox" name="disruption">
+                </li>
+                <li>
+                    <label>Mobile Defense</label>
+                    <input type="checkbox" name="mobile-defense">
+                </li>
+                <li>
+                    <label>Spy</label>
+                    <input type="checkbox" name="spy">
+                </li>
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend>Misc</legend>
+            <button type="button">all</button>
+            <button type="button">none</button>
+            <ul>
+                <li>
+                    <label>Hard</label>
+                    <input type="checkbox" name="hard">
+                </li>
+                <li>
+                    <label>Storm</label>
+                    <input type="checkbox" name="storm">
+                </li>
+            </ul>
+        </fieldset>
+    </form>
     <div class="container">
         <h2>Active Fissures (Fake Data)</h2>
         <div class="card-container"></div>
