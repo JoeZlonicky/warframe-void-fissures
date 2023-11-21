@@ -1,3 +1,12 @@
+:root {
+    --black: black;
+    --darkest: #18122B;
+    --dark: #393053;
+    --light: #443C68;
+    --lightest: #635985;
+    --white: white;
+}
+
 body,
 html {
     margin: 0;
@@ -6,20 +15,15 @@ html {
 
 body {
     align-items: center;
-    background-color: rgb(53, 53, 53);
     color: white;
     display: flex;
     flex-direction: column;
     font-family: Oswald, sans-serif;
-    min-height: 100%;
-    gap: 40px;
 }
 
-header {
-    background-color: rgb(78, 78, 78);
+header, footer {
+    background-color: var(--darkest);
     color: white;
-    font-size: 2rem;
-    font-weight: bold;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -29,20 +33,42 @@ header {
     box-sizing: border-box;
 }
 
-.filter-container {
-    position: absolute;
-    left: 1rem;
-    top: 6rem;
+header {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+footer {
+    font-size: 1.2rem;
+}
+
+button {
+    background-color: var(--dark);
+    color: white;
+    width: 60px;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+}
+
+.left-column {
+    padding: 0px 25px 25px 25px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light);
 }
 
 form ul {
     list-style-type: none;
     margin: 0;
-    padding: 5px;
+    padding: 5px 10px;
 }
 
-.container {
-    background-color: rgb(78, 78, 78);
+.right-column {
+    flex: 1;
+    background-color: var(--dark);
     width: 80%;
     padding: 0 20px 20px 20px;
     box-sizing: border-box;
@@ -59,14 +85,15 @@ form ul {
 }
 
 .card {
-    background-color: rgb(63, 63, 63);
+    background-color: var(--light);
     display: flex;
     padding: 10px;
+    width: 400px;
 }
 
 .card-container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
