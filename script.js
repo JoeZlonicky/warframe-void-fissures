@@ -74,6 +74,24 @@ function createCardElement(fissureData) {
     return card;
 }
 
+function setupFilterButtons(fieldsetSelector) {
+    const fieldset = document.querySelector(fieldsetSelector);
+    const allButton = fieldset.querySelector('.all-filter-button');
+    const noneButton = fieldset.querySelector('.none-filter-button');
+    allButton.addEventListener('click', () => {
+        const inputs = fieldset.querySelectorAll('input');
+        for (let input of inputs) {
+            input.checked = true;
+        }
+    });
+    noneButton.addEventListener('click', () => {
+        const inputs = fieldset.querySelectorAll('input');
+        for (let input of inputs) {
+            input.checked = false;
+        }
+    });
+}
+
 fetchFissureData().then(data => {
     const cardContainer = document.querySelector('.card-container');
 
@@ -82,4 +100,8 @@ fetchFissureData().then(data => {
         cardContainer.appendChild(card);
     }
 });
+
+setupFilterButtons('.tier-fieldset');
+setupFilterButtons('.mission-type-fieldset');
+setupFilterButtons('.other-mission-types-fieldset');
 
