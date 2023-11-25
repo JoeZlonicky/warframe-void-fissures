@@ -66,6 +66,10 @@ form ul {
     padding: 5px 10px;
 }
 
+select#platforms {
+    margin-left: 10px;
+}
+
 .right-column {
     flex: 1;
     background-color: var(--dark);

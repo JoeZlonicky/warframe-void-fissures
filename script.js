@@ -2,10 +2,12 @@ const tierFilter = {};
 const missionTypeFilter = {};
 const miscFilter = {};
 
+let platform = 'pc';
+
 let cards = [];
 
 async function fetchFissureData() {
-    const response = await fetch('https://api.warframestat.us/pc/fissures');
+    const response = await fetch(`https://api.warframestat.us/${platform}/fissures`);
     const fissures = await response.json();
 
     // const fissures = [{
@@ -91,7 +93,6 @@ function createCardElement(fissureData) {
 }
 
 function updateCards() {
-    console.log('Update cards');
     for (let card of cards) {
         let data = card['fissureData'];
         if (missionTypeFilter[data['missionType'].toLowerCase()] === false ||
@@ -104,6 +105,13 @@ function updateCards() {
             card.classList.remove('hidden');
         }
     }
+}
+
+function removeAllCards() {
+    for (let card of cards) {
+        card.remove()
+    }
+    cards.length = 0;
 }
 
 function setupFilterButtons(fieldsetSelector, filter) {
@@ -141,18 +149,35 @@ function setupFilterButtons(fieldsetSelector, filter) {
     }
 }
 
-fetchFissureData().then(data => {
-    const cardContainer = document.querySelector('.card-container');
+function setupPlatformSelect() {
+    const selectPlatform = document.querySelector('#platforms');
+    selectPlatform.addEventListener('change', (e) => {
+        let newPlatform = e.target.value;
+        if (newPlatform === platform) return;
 
-    for (const datum of data) {
-        const card = createCardElement(datum);
-        cards.push(card);
-        cardContainer.appendChild(card);
-    }
+        platform = newPlatform;
+        removeAllCards();
+        populateCards().then(() => updateCards());
+    });
+}
 
+async function populateCards() {
+    fetchFissureData().then(data => {
+        const cardContainer = document.querySelector('.card-container');
+    
+        for (const datum of data) {
+            const card = createCardElement(datum);
+            cards.push(card);
+            cardContainer.appendChild(card);
+        }
+    });
+}
+
+populateCards().then(() => {
     setupFilterButtons('.tier-fieldset', tierFilter);
     setupFilterButtons('.mission-type-fieldset', missionTypeFilter);
     setupFilterButtons('.other-mission-types-fieldset', missionTypeFilter);
     setupFilterButtons('.misc-fieldset', miscFilter);
+    setupPlatformSelect();
     updateCards();
-});
+}); 
