@@ -1,4 +1,5 @@
 const API_URL = 'https://api.warframestat.us/pc/fissures';
+const UPDATE_INTERVAL_MS = 60 * 1000;
 
 const tierFilter = {};
 const missionTypeFilter = {};
@@ -167,4 +168,9 @@ populateCards().then(() => {
     setupFilterButtons('.other-mission-types-fieldset', missionTypeFilter);
     setupFilterButtons('.misc-fieldset', miscFilter);
     updateCards();
+
+    setInterval(() => {
+        removeAllCards();
+        populateCards().then(() => updateCards());
+    }, UPDATE_INTERVAL_MS);
 }); 
