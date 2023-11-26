@@ -8,47 +8,47 @@ const miscFilter = {};
 let cards = [];
 
 async function fetchFissureData() {
-    // const response = await fetch(API_URL);
-    // const fissures = await response.json();
+    const response = await fetch(API_URL);
+    const fissures = await response.json();
 
-    const fissures = [{
-        "id": "6559332eb9b14087f8219611",
-        "activation": "2023-11-18T21:57:02.110Z",
-        "startString": "-1h 2m 42s",
-        "expiry": "2023-11-18T23:55:53.181Z",
-        "active": true,
-        "node": "Olympus (Mars)",
-        "missionType": "Disruption",
-        "missionKey": "Disruption",
-        "enemy": "Grineer",
-        "enemyKey": "Grineer",
-        "nodeKey": "Olympus (Mars)",
-        "tier": "Lith",
-        "tierNum": 1,
-        "expired": false,
-        "eta": "56m 8s",
-        "isStorm": false,
-        "isHard": false
-    },
-    {
-        "id": "65593585fd63d3abfa3b6101",
-        "activation": "2023-11-18T22:07:01.678Z",
-        "startString": "-52m 42s",
-        "expiry": "2023-11-18T23:18:36.715Z",
-        "active": true,
-        "node": "Umbriel (Uranus)",
-        "missionType": "Interception",
-        "missionKey": "Interception",
-        "enemy": "Grineer",
-        "enemyKey": "Grineer",
-        "nodeKey": "Umbriel (Uranus)",
-        "tier": "Neo",
-        "tierNum": 3,
-        "expired": false,
-        "eta": "18m 52s",
-        "isStorm": false,
-        "isHard": false
-    }];
+    // const fissures = [{
+    //     "id": "6559332eb9b14087f8219611",
+    //     "activation": "2023-11-18T21:57:02.110Z",
+    //     "startString": "-1h 2m 42s",
+    //     "expiry": "2023-11-18T23:55:53.181Z",
+    //     "active": true,
+    //     "node": "Olympus (Mars)",
+    //     "missionType": "Disruption",
+    //     "missionKey": "Disruption",
+    //     "enemy": "Grineer",
+    //     "enemyKey": "Grineer",
+    //     "nodeKey": "Olympus (Mars)",
+    //     "tier": "Lith",
+    //     "tierNum": 1,
+    //     "expired": false,
+    //     "eta": "56m 8s",
+    //     "isStorm": false,
+    //     "isHard": false
+    // },
+    // {
+    //     "id": "65593585fd63d3abfa3b6101",
+    //     "activation": "2023-11-18T22:07:01.678Z",
+    //     "startString": "-52m 42s",
+    //     "expiry": "2023-11-18T23:18:36.715Z",
+    //     "active": true,
+    //     "node": "Umbriel (Uranus)",
+    //     "missionType": "Interception",
+    //     "missionKey": "Interception",
+    //     "enemy": "Grineer",
+    //     "enemyKey": "Grineer",
+    //     "nodeKey": "Umbriel (Uranus)",
+    //     "tier": "Neo",
+    //     "tierNum": 3,
+    //     "expired": false,
+    //     "eta": "18m 52s",
+    //     "isStorm": false,
+    //     "isHard": false
+    // }];
     return fissures;
 }
 
