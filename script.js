@@ -1,13 +1,13 @@
+const API_URL = 'https://api.warframestat.us/pc/fissures';
+
 const tierFilter = {};
 const missionTypeFilter = {};
 const miscFilter = {};
 
-let platform = 'pc';
-
 let cards = [];
 
 async function fetchFissureData() {
-    const response = await fetch(`https://api.warframestat.us/${platform}/fissures`);
+    const response = await fetch(API_URL);
     const fissures = await response.json();
 
     // const fissures = [{
@@ -149,18 +149,6 @@ function setupFilterButtons(fieldsetSelector, filter) {
     }
 }
 
-function setupPlatformSelect() {
-    const selectPlatform = document.querySelector('#platforms');
-    selectPlatform.addEventListener('change', (e) => {
-        let newPlatform = e.target.value;
-        if (newPlatform === platform) return;
-
-        platform = newPlatform;
-        removeAllCards();
-        populateCards().then(() => updateCards());
-    });
-}
-
 async function populateCards() {
     fetchFissureData().then(data => {
         const cardContainer = document.querySelector('.card-container');
@@ -178,6 +166,5 @@ populateCards().then(() => {
     setupFilterButtons('.mission-type-fieldset', missionTypeFilter);
     setupFilterButtons('.other-mission-types-fieldset', missionTypeFilter);
     setupFilterButtons('.misc-fieldset', miscFilter);
-    setupPlatformSelect();
     updateCards();
 }); 
