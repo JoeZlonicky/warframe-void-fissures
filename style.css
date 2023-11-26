@@ -48,12 +48,12 @@ button {
     width: 60px;
 }
 
-.content {
+main {
     display: flex;
     width: 100%;
 }
 
-.left-column {
+.filter-form {
     padding: 0px 25px 25px 25px;
     display: flex;
     flex-direction: column;
