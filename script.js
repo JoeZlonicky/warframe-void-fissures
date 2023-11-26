@@ -57,10 +57,10 @@ function createCardElement(fissureData) {
     card.className = 'card';
 
     const leftColumn = document.createElement('div');
-    leftColumn.className = 'card-left-column';
+    leftColumn.className = 'card__left-column';
 
     const cardTitle = document.createElement('div');
-    cardTitle.className = "card-title";
+    cardTitle.className = "card__title";
     cardTitle.textContent = fissureData['nodeKey'];
     if (fissureData['isHard']) {
         cardTitle.textContent += ' - Hard';
@@ -72,17 +72,17 @@ function createCardElement(fissureData) {
     leftColumn.appendChild(cardTitle);
 
     const cardInfo = document.createElement('div');
-    cardInfo.className = "card-info";
+    cardInfo.className = "card__info";
     cardInfo.textContent = `${fissureData['tier']} - ${fissureData['missionType']} - ${fissureData['enemy']}`;
     leftColumn.appendChild(cardInfo);
 
     card.appendChild(leftColumn);
 
     const rightColumn = document.createElement('div');
-    rightColumn.className = 'card-right-column';
+    rightColumn.className = 'card__right-column';
 
     const cardTime = document.createElement('div');
-    cardTime.className = 'card-time';
+    cardTime.className = 'card__time';
     cardTime.textContent = fissureData['eta'];
     rightColumn.appendChild(cardTime);
 
@@ -100,10 +100,10 @@ function updateCards() {
             tierFilter[data['tier'].toLowerCase()] === false ||
             (data['isHard'] && miscFilter['hard'] === false) ||
             (data['isStorm'] && miscFilter['storm'] === false)) {
-            card.classList.add('hidden');
+            card.classList.add('card--hidden');
         }
         else {
-            card.classList.remove('hidden');
+            card.classList.remove('card--hidden');
         }
     }
 }
