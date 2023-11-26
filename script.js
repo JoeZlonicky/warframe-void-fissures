@@ -151,15 +151,14 @@ function setupFilterButtons(fieldsetSelector, filter) {
 }
 
 async function populateCards() {
-    fetchFissureData().then(data => {
-        const cardContainer = document.querySelector('.card-container');
-    
-        for (const datum of data) {
-            const card = createCardElement(datum);
-            cards.push(card);
-            cardContainer.appendChild(card);
-        }
-    });
+    const data = await fetchFissureData();
+    const cardContainer = document.querySelector('.card-container');
+
+    for (const datum of data) {
+        const card = createCardElement(datum);
+        cards.push(card);
+        cardContainer.appendChild(card);
+    }
 }
 
 populateCards().then(() => {
