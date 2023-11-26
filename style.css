@@ -45,14 +45,22 @@ body {
 
 .filter-form ul {
     list-style-type: none;
-    margin: 0;
-    padding: 5px 10px;
+    margin: 5px 0 0 0;
+    padding: 5px 0;
 }
 
 .filter-form__all-button, .filter-form__none-button {
     background-color: var(--dark);
     color: white;
+    border: 1px solid white;
+    text-decoration: none;
+    transition-duration: 0.2s;
+    cursor: pointer;
     width: 60px;
+}
+
+.filter-form__all-button:hover, .filter-form__none-button:hover {
+    background-color: var(--lightest);
 }
 
 /* Content secton */
