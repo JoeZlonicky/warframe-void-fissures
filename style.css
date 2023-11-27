@@ -63,6 +63,10 @@ body {
     background-color: var(--lightest);
 }
 
+.filter-form__all-button:active, .filter-form__none-button:active {
+    background-color: var(--darkest);
+}
+
 /* Content secton */
 .content {
     flex: 1;
