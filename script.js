@@ -11,44 +11,6 @@ async function fetchFissureData() {
     const response = await fetch(API_URL);
     const fissures = await response.json();
 
-    // const fissures = [{
-    //     "id": "6559332eb9b14087f8219611",
-    //     "activation": "2023-11-18T21:57:02.110Z",
-    //     "startString": "-1h 2m 42s",
-    //     "expiry": "2023-11-18T23:55:53.181Z",
-    //     "active": true,
-    //     "node": "Olympus (Mars)",
-    //     "missionType": "Disruption",
-    //     "missionKey": "Disruption",
-    //     "enemy": "Grineer",
-    //     "enemyKey": "Grineer",
-    //     "nodeKey": "Olympus (Mars)",
-    //     "tier": "Lith",
-    //     "tierNum": 1,
-    //     "expired": false,
-    //     "eta": "56m 8s",
-    //     "isStorm": false,
-    //     "isHard": false
-    // },
-    // {
-    //     "id": "65593585fd63d3abfa3b6101",
-    //     "activation": "2023-11-18T22:07:01.678Z",
-    //     "startString": "-52m 42s",
-    //     "expiry": "2023-11-18T23:18:36.715Z",
-    //     "active": true,
-    //     "node": "Umbriel (Uranus)",
-    //     "missionType": "Interception",
-    //     "missionKey": "Interception",
-    //     "enemy": "Grineer",
-    //     "enemyKey": "Grineer",
-    //     "nodeKey": "Umbriel (Uranus)",
-    //     "tier": "Neo",
-    //     "tierNum": 3,
-    //     "expired": false,
-    //     "eta": "18m 52s",
-    //     "isStorm": false,
-    //     "isHard": false
-    // }];
     return fissures;
 }
 
@@ -150,18 +112,24 @@ function setupFilterButtons(fieldsetSelector, filter) {
     }
 }
 
-async function populateCards() {
+async function repopulateCards() {
     const data = await fetchFissureData();
     const cardContainer = document.querySelector('.card-container');
+
+    if (cards.length) {
+        removeAllCards();
+    }
 
     for (const datum of data) {
         const card = createCardElement(datum);
         cards.push(card);
         cardContainer.appendChild(card);
     }
+
+    updateCards();
 }
 
-populateCards().then(() => {
+repopulateCards().then(() => {
     setupFilterButtons('.filter-form__tier', tierFilter);
     setupFilterButtons('.filter-form__mission-type', missionTypeFilter);
     setupFilterButtons('.filter-form__other-mission-type', missionTypeFilter);
@@ -169,7 +137,6 @@ populateCards().then(() => {
     updateCards();
 
     setInterval(() => {
-        removeAllCards();
-        populateCards().then(() => updateCards());
+        repopulateCards();
     }, UPDATE_INTERVAL_MS);
 }); 
