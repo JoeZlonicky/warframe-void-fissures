@@ -132,6 +132,7 @@ body {
     color: var(--white);
     border: 2px solid var(--white);
     cursor: pointer;
+    will-change: transform;
 }
 
 .filter-form__toggle--open {
