@@ -14,6 +14,37 @@ async function fetchFissureData() {
     return fissures;
 }
 
+async function repopulateCards() {
+    const loadingText = document.querySelector('.content__loading-status-text');
+
+    let data = null;
+    try {
+        data = await fetchFissureData();
+    } catch (err) {
+        if (cards.length) {
+            removeAllCards();
+        }
+        loadingText.classList.remove('hidden');
+        loadingText.textContent = 'Failed to load :(';
+        return;
+    }
+    
+    if (cards.length) {
+        removeAllCards();
+    }
+    
+    loadingText.classList.add('hidden');
+
+    const cardContainer = document.querySelector('.card-container');
+    for (const datum of data) {
+        const card = createCardElement(datum);
+        cards.push(card);
+        cardContainer.appendChild(card);
+    }
+
+    updateCards();
+}
+
 function createCardElement(fissureData) {
     const card = document.createElement('div');
     card.className = 'card';
@@ -49,7 +80,6 @@ function createCardElement(fissureData) {
     rightColumn.appendChild(cardTime);
 
     card.appendChild(rightColumn);
-
     
     card['fissureData'] = fissureData;
     return card;
@@ -62,10 +92,10 @@ function updateCards() {
             tierFilter[data['tier'].toLowerCase()] === false ||
             (data['isHard'] && miscFilter['hard'] === false) ||
             (data['isStorm'] && miscFilter['storm'] === false)) {
-            card.classList.add('card--hidden');
+            card.classList.add('hidden');
         }
         else {
-            card.classList.remove('card--hidden');
+            card.classList.remove('hidden');
         }
     }
 }
@@ -129,31 +159,13 @@ function setupOverlayToggleButtons() {
     })
 }
 
-async function repopulateCards() {
-    const data = await fetchFissureData();
-    const cardContainer = document.querySelector('.card-container');
-
-    if (cards.length) {
-        removeAllCards();
-    }
-
-    for (const datum of data) {
-        const card = createCardElement(datum);
-        cards.push(card);
-        cardContainer.appendChild(card);
-    }
-
-    updateCards();
-}
+setupFilterButtons('.filter-form__tier', tierFilter);
+setupFilterButtons('.filter-form__mission-type', missionTypeFilter);
+setupFilterButtons('.filter-form__other-mission-type', missionTypeFilter);
+setupFilterButtons('.filter-form__misc', miscFilter);
+setupOverlayToggleButtons();
 
 repopulateCards().then(() => {
-    setupFilterButtons('.filter-form__tier', tierFilter);
-    setupFilterButtons('.filter-form__mission-type', missionTypeFilter);
-    setupFilterButtons('.filter-form__other-mission-type', missionTypeFilter);
-    setupFilterButtons('.filter-form__misc', miscFilter);
-    setupOverlayToggleButtons();
-    updateCards();
-
     setInterval(() => {
         repopulateCards();
     }, UPDATE_INTERVAL_MS);
