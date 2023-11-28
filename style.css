@@ -6,22 +6,35 @@
     --light: #443C68;
     --lightest: #635985;
     --white: white;
+
+    --scrollbar-width: calc(100vw - 100%);
+    
+    font-family: Oswald, sans-serif;
+    color: white;
 }
 
+/* General layout */
 body {
     margin: 0;
-    align-items: center;
-    color: white;
-    font-family: Oswald, sans-serif;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto;
+    font-size: 1.1rem;
 }
 
-/* Sections */
+@media only screen and (max-width: 650px)  {
+    body {
+        grid-template-columns: 1fr;
+    }
+}
+
 .header, .footer {
     background-color: var(--darkest);
     padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    grid-column: 1 / 3;
 }
 
 .header {
@@ -31,10 +44,7 @@ body {
 
 .footer {
     font-size: 1.2rem;
-}
-
-.main {
-    display: flex;
+    grid-row: 3 / 4;
 }
 
 /* Filter form */
@@ -43,10 +53,47 @@ body {
     background-color: var(--light);
 }
 
+@media only screen and (max-width: 650px) {
+    .filter-form {
+        box-sizing: border-box;
+        height: 100%;
+        width: 0;
+        padding: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        overflow-x: hidden;
+    }
+
+    .filter-form.overlay-enabled {
+        width: 100%;
+        padding: 0px 25px 25px 25px;
+        position: fixed;
+    }
+
+    .filter-form.overlay-enabled .filter-form__toggle {
+        position: fixed;
+    }
+}
+
+.filter-form h2 {
+    margin-bottom: 10px;
+}
+
+.filter-form fieldset {
+    margin-bottom: 10px;
+}
+
 .filter-form ul {
     list-style-type: none;
     margin: 5px 0 0 0;
     padding: 5px 0;
+}
+
+.filter-form__misc ul {
+    margin: 0;
+    padding: 0;
 }
 
 .filter-form__all-button, .filter-form__none-button {
@@ -59,6 +106,10 @@ body {
     width: 60px;
 }
 
+.filter-form__all-button {
+    margin-right: 5px;
+}
+
 .filter-form__all-button:hover, .filter-form__none-button:hover {
     background-color: var(--lightest);
 }
@@ -67,18 +118,54 @@ body {
     background-color: var(--darkest);
 }
 
+/* Filter form toggle open/close buttons */
+.filter-form__toggle {
+    display: none;
+    width: 50px;
+    height: 50px;
+    bottom: 25px;
+    right: calc(50px - var(--scrollbar-width));
+    border-radius: 50%;
+    font-size: 25px;
+    background-color: var(--lightest);
+    color: var(--white);
+    border: 2px solid var(--white);
+    cursor: pointer;
+}
+
+.filter-form__toggle--open {
+    position: fixed;
+}
+
+.filter-form__toggle:hover {
+    background-color: var(--white);
+    color: var(--lightest);
+}
+
+.filter-form__toggle:active {
+    background-color: var(--lightest);
+    color: var(--white);
+}
+
+@media only screen and (max-width: 650px) {
+    .filter-form__toggle {
+        display: block;
+    }
+
+    body.overlay-enabled {
+        overflow: hidden;
+    }
+}
+
 /* Content secton */
 .content {
-    flex: 1;
     background-color: var(--dark);
-    width: 80%;
     padding: 0 20px 20px 20px;
-    box-sizing: border-box;
 }
 
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
     gap: 20px;
 }
 
@@ -87,7 +174,6 @@ body {
     background-color: var(--light);
     display: flex;
     padding: 10px;
-    width: 350px;
 }
 
 .card--hidden {

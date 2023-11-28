@@ -62,10 +62,10 @@ function updateCards() {
             tierFilter[data['tier'].toLowerCase()] === false ||
             (data['isHard'] && miscFilter['hard'] === false) ||
             (data['isStorm'] && miscFilter['storm'] === false)) {
-            card.classList.add('card--hidden');
+            card.classList.add('hidden');
         }
         else {
-            card.classList.remove('card--hidden');
+            card.classList.remove('hidden');
         }
     }
 }
@@ -112,6 +112,23 @@ function setupFilterButtons(fieldsetSelector, filter) {
     }
 }
 
+function setupOverlayToggleButtons() {
+    const openButton = document.querySelector('.filter-form__toggle--open');
+    const closeButton = document.querySelector('.filter-form__toggle--close');
+    const filterForm = document.querySelector('.filter-form');
+    const body = document.querySelector('body');
+
+    openButton.addEventListener('click', () => {
+        filterForm.classList.add('overlay-enabled');
+        body.classList.add('overlay-enabled');
+    });
+
+    closeButton.addEventListener('click', () => {
+        filterForm.classList.remove('overlay-enabled');
+        body.classList.remove('overlay-enabled');
+    })
+}
+
 async function repopulateCards() {
     const data = await fetchFissureData();
     const cardContainer = document.querySelector('.card-container');
@@ -134,6 +151,7 @@ repopulateCards().then(() => {
     setupFilterButtons('.filter-form__mission-type', missionTypeFilter);
     setupFilterButtons('.filter-form__other-mission-type', missionTypeFilter);
     setupFilterButtons('.filter-form__misc', miscFilter);
+    setupOverlayToggleButtons();
     updateCards();
 
     setInterval(() => {

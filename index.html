@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warframe Void Fissures</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
@@ -13,132 +14,136 @@
 <body>
     <div class="header">Warframe Void Fissures</div>
 
-    <div class="main">
-        <form class="filter-form">
-            <h2>Filter</h2>
-            <fieldset class="filter-form__tier">
-                <legend>Tier</legend>
-                <button type="button" class="filter-form__all-button">All</button>
-                <button type="button" class="filter-form__none-button">None</button>
-                <ul>
-                    <li>
-                        <label for="lith">Lith</label>
-                        <input type="checkbox" name="lith" id="lith" checked>
-                    </li>
-                    <li>
-                        <label for="meso">Meso</label>
-                        <input type="checkbox" name="meso" id="meso" checked>
-                    </li>
-                    <li>
-                        <label for="neo">Neo</label>
-                        <input type="checkbox" name="neo" id="neo" checked>
-                    </li>
-                    <li>
-                        <label for="axi">Axi</label>
-                        <input type="checkbox" name="axi" id="axi" checked>
-                    </li>
-                    <li>
-                        <label for="requiem">Requiem</label>
-                        <input type="checkbox" name="requiem" id="requiem" checked>
-                    </li>
-                </ul>
-            </fieldset>
+    <form class="filter-form">
+        <h2>Filter</h2>
+        <button type="button" class="filter-form__toggle filter-form__toggle--close">
+            <i class="fa fa-check"></i>
+        </button>
+        <fieldset class="filter-form__tier">
+            <legend>Tier</legend>
+            <button type="button" class="filter-form__all-button">All</button>
+            <button type="button" class="filter-form__none-button">None</button>
+            <ul>
+                <li>
+                    <label for="lith">Lith</label>
+                    <input type="checkbox" name="lith" id="lith" checked>
+                </li>
+                <li>
+                    <label for="meso">Meso</label>
+                    <input type="checkbox" name="meso" id="meso" checked>
+                </li>
+                <li>
+                    <label for="neo">Neo</label>
+                    <input type="checkbox" name="neo" id="neo" checked>
+                </li>
+                <li>
+                    <label for="axi">Axi</label>
+                    <input type="checkbox" name="axi" id="axi" checked>
+                </li>
+                <li>
+                    <label for="requiem">Requiem</label>
+                    <input type="checkbox" name="requiem" id="requiem" checked>
+                </li>
+            </ul>
+        </fieldset>
 
-            <fieldset class="filter-form__mission-type">
-                <legend>Standard Mission Types</legend>
-                <button type="button" class="filter-form__all-button">All</button>
-                <button type="button" class="filter-form__none-button">None</button>
-                <ul>
-                    <li>
-                        <label for="extermination">Extermination</label>
-                        <input type="checkbox" name="extermination" id="extermination" checked>
-                    </li>
-                    <li>
-                        <label for="excavation">Excavation</label>
-                        <input type="checkbox" name="excavation" id="excavation" checked>
-                    </li>
-                    <li>
-                        <label for="rescue">Rescue</label>
-                        <input type="checkbox" name="rescue" id="rescue" checked>
-                    </li>
-                    <li>
-                        <label for="capture">Capture</label>
-                        <input type="checkbox" name="capture" id="capture" checked>
-                    </li>
-                    <li>
-                        <label for="defense">Defense</label>
-                        <input type="checkbox" name="defense" id="defense" checked>
-                    </li>
-                    <li>
-                        <label for="survival">Survival</label>
-                        <input type="checkbox" name="survival" id="survival" checked>
-                    </li>
-                    <li>
-                        <label for="interception">Interception</label>
-                        <input type="checkbox" name="interception" id="interception" checked>
-                    </li>
-                    <li>
-                        <label for="disruption">Disruption</label>
-                        <input type="checkbox" name="disruption" id="disruption" checked>
-                    </li>
-                    <li>
-                        <label for="mobile defense">Mobile Defense</label>
-                        <input type="checkbox" name="mobile defense" id="mobile defense" checked>
-                    </li>
-                    <li>
-                        <label for="spy">Spy</label>
-                        <input type="checkbox" name="spy" id="spy" checked>
-                    </li>
-                </ul>
-            </fieldset>
+        <fieldset class="filter-form__mission-type">
+            <legend>Standard Mission Types</legend>
+            <button type="button" class="filter-form__all-button">All</button>
+            <button type="button" class="filter-form__none-button">None</button>
+            <ul>
+                <li>
+                    <label for="extermination">Extermination</label>
+                    <input type="checkbox" name="extermination" id="extermination" checked>
+                </li>
+                <li>
+                    <label for="excavation">Excavation</label>
+                    <input type="checkbox" name="excavation" id="excavation" checked>
+                </li>
+                <li>
+                    <label for="rescue">Rescue</label>
+                    <input type="checkbox" name="rescue" id="rescue" checked>
+                </li>
+                <li>
+                    <label for="capture">Capture</label>
+                    <input type="checkbox" name="capture" id="capture" checked>
+                </li>
+                <li>
+                    <label for="defense">Defense</label>
+                    <input type="checkbox" name="defense" id="defense" checked>
+                </li>
+                <li>
+                    <label for="survival">Survival</label>
+                    <input type="checkbox" name="survival" id="survival" checked>
+                </li>
+                <li>
+                    <label for="interception">Interception</label>
+                    <input type="checkbox" name="interception" id="interception" checked>
+                </li>
+                <li>
+                    <label for="disruption">Disruption</label>
+                    <input type="checkbox" name="disruption" id="disruption" checked>
+                </li>
+                <li>
+                    <label for="mobile defense">Mobile Defense</label>
+                    <input type="checkbox" name="mobile defense" id="mobile defense" checked>
+                </li>
+                <li>
+                    <label for="spy">Spy</label>
+                    <input type="checkbox" name="spy" id="spy" checked>
+                </li>
+            </ul>
+        </fieldset>
 
-            <fieldset class="filter-form__other-mission-type">
-                <legend>Other Mission Types</legend>
-                <button type="button" class="filter-form__all-button">All</button>
-                <button type="button" class="filter-form__none-button">None</button>
-                <ul>
-                    <li>
-                        <label for="sabotage">Sabotage</label>
-                        <input type="checkbox" name="sabotage" id="sabotage" checked>
-                    </li>
-                    <li>
-                        <label for="assault">Assault</label>
-                        <input type="checkbox" name="assault" id="assault" checked>
-                    </li>
-                    <li>
-                        <label for="skirmish">Skirmish</label>
-                        <input type="checkbox" name="skirmish" id="skirmish" checked>
-                    </li>
-                    <li>
-                        <label for="orphix">Orphix</label>
-                        <input type="checkbox" name="orphix" id="orphix" checked>
-                    </li>
-                    <li>
-                        <label for="volatile">Volatile</label>
-                        <input type="checkbox" name="volatile" id="volatile" checked>
-                    </li>
-                </ul>
-            </fieldset>
+        <fieldset class="filter-form__other-mission-type">
+            <legend>Other Mission Types</legend>
+            <button type="button" class="filter-form__all-button">All</button>
+            <button type="button" class="filter-form__none-button">None</button>
+            <ul>
+                <li>
+                    <label for="sabotage">Sabotage</label>
+                    <input type="checkbox" name="sabotage" id="sabotage" checked>
+                </li>
+                <li>
+                    <label for="assault">Assault</label>
+                    <input type="checkbox" name="assault" id="assault" checked>
+                </li>
+                <li>
+                    <label for="skirmish">Skirmish</label>
+                    <input type="checkbox" name="skirmish" id="skirmish" checked>
+                </li>
+                <li>
+                    <label for="orphix">Orphix</label>
+                    <input type="checkbox" name="orphix" id="orphix" checked>
+                </li>
+                <li>
+                    <label for="volatile">Volatile</label>
+                    <input type="checkbox" name="volatile" id="volatile" checked>
+                </li>
+            </ul>
+        </fieldset>
 
-            <fieldset class="filter-form__misc">
-                <legend>Misc</legend>
-                <ul>
-                    <li>
-                        <label for="hard">Hard</label>
-                        <input type="checkbox" name="hard" id="hard" checked>
-                    </li>
-                    <li>
-                        <label for="storm">Storm</label>
-                        <input type="checkbox" name="storm" id="storm" checked>
-                    </li>
-                </ul>
-            </fieldset>
-        </form>
+        <fieldset class="filter-form__misc">
+            <legend>Misc</legend>
+            <ul>
+                <li>
+                    <label for="hard">Hard</label>
+                    <input type="checkbox" name="hard" id="hard" checked>
+                </li>
+                <li>
+                    <label for="storm">Storm</label>
+                    <input type="checkbox" name="storm" id="storm" checked>
+                </li>
+            </ul>
+        </fieldset>
+    </form>
 
-        <div class="content">
-            <h2>Active Fissures</h2>
-            <div class="card-container"></div>
-        </div>
+    <div class="content">
+        <h2>Active Fissures</h2>
+        <button type="button" class="filter-form__toggle filter-form__toggle--open">
+            <i class="fa fa-filter" aria-hidden="true"></i>
+        </button>
+        <div class="card-container"></div>
     </div>
 
     <div class="footer">Made by Joe Zlonicky</div>
