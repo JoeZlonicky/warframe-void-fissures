@@ -62,10 +62,10 @@ function updateCards() {
             tierFilter[data['tier'].toLowerCase()] === false ||
             (data['isHard'] && miscFilter['hard'] === false) ||
             (data['isStorm'] && miscFilter['storm'] === false)) {
-            card.classList.add('hidden');
+            card.classList.add('card--hidden');
         }
         else {
-            card.classList.remove('hidden');
+            card.classList.remove('card--hidden');
         }
     }
 }
